@@ -12,6 +12,13 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
+extras_require = {
+    "test":[
+        "pytest>=3.3.0",
+    ],
+}
+extras_require['all'] = list(set(sum(extras_require.values(), [])))
+
 setup(
     name='allofplos',
     # https://packaging.python.org/en/latest/single_source_version.html
@@ -51,6 +58,7 @@ setup(
         'urllib3==1.22',
         ],
     python_requires='>=3.4',
+    extras_require=extras_requires,
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.
